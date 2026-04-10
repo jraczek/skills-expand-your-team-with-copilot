@@ -31,16 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedTheme === "dark") {
     document.body.setAttribute("data-theme", "dark");
     darkModeToggle.textContent = "☀️";
+    darkModeToggle.setAttribute("aria-label", "Switch to light mode");
+  } else {
+    document.body.removeAttribute("data-theme");
+    darkModeToggle.textContent = "🌙";
+    darkModeToggle.setAttribute("aria-label", "Switch to dark mode");
   }
   darkModeToggle.addEventListener("click", () => {
     const isDark = document.body.getAttribute("data-theme") === "dark";
     if (isDark) {
       document.body.removeAttribute("data-theme");
       darkModeToggle.textContent = "🌙";
+      darkModeToggle.setAttribute("aria-label", "Switch to dark mode");
       localStorage.setItem("theme", "light");
     } else {
       document.body.setAttribute("data-theme", "dark");
       darkModeToggle.textContent = "☀️";
+      darkModeToggle.setAttribute("aria-label", "Switch to light mode");
       localStorage.setItem("theme", "dark");
     }
   });
